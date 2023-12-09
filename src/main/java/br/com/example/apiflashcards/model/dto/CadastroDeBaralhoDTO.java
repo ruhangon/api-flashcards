@@ -1,5 +1,11 @@
 package br.com.example.apiflashcards.model.dto;
 
-public record CadastroDeBaralhoDTO(String nome) {
+import java.util.List;
 
-}
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public record CadastroDeBaralhoDTO(
+		@NotBlank String nome,
+		@Size(min=1) List<TextoCartaDTO> listaTextoCarta
+) {}
