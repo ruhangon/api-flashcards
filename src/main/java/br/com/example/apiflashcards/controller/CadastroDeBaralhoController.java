@@ -9,21 +9,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.example.apiflashcards.model.dto.CadastroDeBaralhoDTO;
-import br.com.example.apiflashcards.service.CadastroDeBaralhoService;
+import br.com.example.apiflashcards.service.impl.CadastroDeBaralhoServiceImpl;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/baralhos")
 public class CadastroDeBaralhoController {
-	private final CadastroDeBaralhoService cadastroDeBaralhoService;
+	private final CadastroDeBaralhoServiceImpl cadastroDeBaralhoServiceImpl;
 
 	@Autowired
-	public CadastroDeBaralhoController(CadastroDeBaralhoService cadastroDeBaralhoService) {
-		this.cadastroDeBaralhoService = cadastroDeBaralhoService;
+	public CadastroDeBaralhoController(CadastroDeBaralhoServiceImpl cadastroDeBaralhoServiceImpl) {
+		this.cadastroDeBaralhoServiceImpl = cadastroDeBaralhoServiceImpl;
 	}
 
 	@PostMapping(value = "/cadastrar")
-	public ResponseEntity<String> cadastrarBaralho(@RequestBody CadastroDeBaralhoDTO cadastroDeBaralhoDTO) {
-		String cadastroDeBaralhoResponse = cadastroDeBaralhoService.cadastrarBaralho(cadastroDeBaralhoDTO);
+	public ResponseEntity<String> cadastrarBaralho(@RequestBody @Valid CadastroDeBaralhoDTO cadastroDeBaralhoDTO) {
+		String cadastroDeBaralhoResponse = cadastroDeBaralhoServiceImpl.cadastrarBaralho(cadastroDeBaralhoDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(cadastroDeBaralhoResponse);
 	}
 
