@@ -14,10 +14,13 @@ import br.com.example.apiflashcards.service.CadastroDeBaralhoService;
 @Service
 public class CadastroDeBaralhoServiceImpl implements CadastroDeBaralhoService {
 	private final BaralhoRepository baralhoRepository;
+	private final CadastroDeCartaServiceImpl cadastroDeCartaServiceImpl;
 
 	@Autowired
-	public CadastroDeBaralhoServiceImpl(BaralhoRepository baralhoRepository) {
+	public CadastroDeBaralhoServiceImpl(BaralhoRepository baralhoRepository,
+			CadastroDeCartaServiceImpl cadastroDeCartaServiceImpl) {
 		this.baralhoRepository = baralhoRepository;
+		this.cadastroDeCartaServiceImpl = cadastroDeCartaServiceImpl;
 	}
 
 	@Override
@@ -26,6 +29,7 @@ public class CadastroDeBaralhoServiceImpl implements CadastroDeBaralhoService {
 		BaralhoMapper baralhoMapper = new BaralhoMapper();
 		Baralho baralho = baralhoMapper.toBaralho(cadastroDeBaralhoDTO);
 		baralhoRepository.save(baralho);
+		cadastroDeCartaServiceImpl.cadastrarCartas(cadastroDeBaralhoDTO.baralho().cartas(), baralho);
 		return HttpStatus.CREATED.getReasonPhrase();
 	}
 
