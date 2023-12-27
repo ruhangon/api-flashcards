@@ -3,12 +3,12 @@ package br.com.example.apiflashcards.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import br.com.example.apiflashcards.dominio.portas.entrada.CadastroDeBaralhoServicePorta;
-import br.com.example.apiflashcards.dominio.portas.entrada.CadastroDeCartaServicePorta;
-import br.com.example.apiflashcards.dominio.portas.saida.CadastroDeBaralhoRepositoryPorta;
-import br.com.example.apiflashcards.dominio.portas.saida.CadastroDeCartaRepositoryPorta;
-import br.com.example.apiflashcards.dominio.service.CadastroDeBaralhoServiceImpl;
-import br.com.example.apiflashcards.dominio.service.CadastroDeCartaServiceImpl;
+import br.com.example.apiflashcards.domain.ports.in.CadastroDeBaralhoServicePorta;
+import br.com.example.apiflashcards.domain.ports.in.CadastroDeCartaServicePorta;
+import br.com.example.apiflashcards.domain.ports.out.CadastroDeBaralhoRepositoryPorta;
+import br.com.example.apiflashcards.domain.ports.out.CadastroDeCartaRepositoryPorta;
+import br.com.example.apiflashcards.domain.service.CadastroDeBaralhoServiceImpl;
+import br.com.example.apiflashcards.domain.service.CadastroDeCartaServiceImpl;
 
 @Configuration
 public class BeanConfiguration {
