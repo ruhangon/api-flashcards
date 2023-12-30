@@ -7,7 +7,6 @@ import br.com.example.apiflashcards.domain.Baralho;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeBaralhoServicePorta;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeCartaServicePorta;
 import br.com.example.apiflashcards.domain.ports.out.CadastroDeBaralhoRepositoryPorta;
-import br.com.example.apiflashcards.domain.service.mapper.BaralhoMapper;
 
 public class CadastroDeBaralhoServiceImpl implements CadastroDeBaralhoServicePorta {
 	private final CadastroDeBaralhoRepositoryPorta cadastroDeBaralhoRepositoryPorta;
@@ -21,8 +20,7 @@ public class CadastroDeBaralhoServiceImpl implements CadastroDeBaralhoServicePor
 
 	@Override
 	public String cadastrarBaralho(CadastroDeBaralhoDTO cadastroDeBaralhoDTO) {
-		BaralhoMapper baralhoMapper = new BaralhoMapper();
-		Baralho baralho = baralhoMapper.toBaralho(cadastroDeBaralhoDTO);
+		Baralho baralho = new Baralho(cadastroDeBaralhoDTO);
 		cadastroDeBaralhoRepositoryPorta.save(baralho);
 		cadastroDeCartaServicePorta.cadastrarCartas(cadastroDeBaralhoDTO.baralho().cartas(), baralho.getId());
 		return HttpStatus.CREATED.getReasonPhrase();

@@ -6,7 +6,16 @@ public class Carta {
 	private String tras;
 	private Integer fila;
 
-	public Long getId() {
+	public Carta() {
+	}
+
+	public Carta(String frente, String tras, Integer valorInicialDeFilaParaNovaCarta) {
+		this.frente = frente;
+		this.tras = tras;
+		this.fila = valorInicialDeFilaParaNovaCarta;
+	}
+
+    public Long getId() {
 		return id;
 	}
 

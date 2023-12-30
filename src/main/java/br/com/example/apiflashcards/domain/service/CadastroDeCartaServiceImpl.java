@@ -6,9 +6,10 @@ import br.com.example.apiflashcards.adapter.in.model.dto.TextoCartaDTO;
 import br.com.example.apiflashcards.domain.Carta;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeCartaServicePorta;
 import br.com.example.apiflashcards.domain.ports.out.CadastroDeCartaRepositoryPorta;
-import br.com.example.apiflashcards.domain.service.mapper.CartaMapper;
 
 public class CadastroDeCartaServiceImpl implements CadastroDeCartaServicePorta {
+	private static final Integer VALOR_INICIAL_DE_FILA_PARA_NOVA_CARTA = 1;
+
 	private final CadastroDeCartaRepositoryPorta cadastroDeCartaRepositoryPorta;
 
 	public CadastroDeCartaServiceImpl(CadastroDeCartaRepositoryPorta cadastroDeCartaRepositoryPorta) {
@@ -17,9 +18,8 @@ public class CadastroDeCartaServiceImpl implements CadastroDeCartaServicePorta {
 
 	@Override
 	public void cadastrarCartas(List<TextoCartaDTO> cartas, Long idBaralho) {
-		CartaMapper cartaMapper = new CartaMapper();
 		cartas.forEach((TextoCartaDTO textoCartaDTO) -> {
-			Carta carta = cartaMapper.toCarta(textoCartaDTO);
+			Carta carta = new Carta(textoCartaDTO.frente(), textoCartaDTO.tras(), VALOR_INICIAL_DE_FILA_PARA_NOVA_CARTA);
 			cadastroDeCartaRepositoryPorta.save(carta, idBaralho);
 		});
 	}

@@ -2,12 +2,21 @@ package br.com.example.apiflashcards.domain;
 
 import java.util.List;
 
+import br.com.example.apiflashcards.adapter.in.model.dto.CadastroDeBaralhoDTO;
+
 public class Baralho {
 	private Long id;
 	private String nome;
 	private List<Carta> cartas;
 
-	public Long getId() {
+	public Baralho() {
+	}
+
+	public Baralho(CadastroDeBaralhoDTO cadastroDeBaralhoDTO) {
+		this.nome = cadastroDeBaralhoDTO.baralho().nome();
+	}
+
+    public Long getId() {
 		return id;
 	}
 

@@ -10,11 +10,11 @@ import br.com.example.apiflashcards.domain.ports.out.BuscaDeBaralhoRepositoryPor
 import br.com.example.apiflashcards.domain.ports.out.CadastroDeCartaRepositoryPorta;
 
 @Component
-public class CartaRepository implements CadastroDeCartaRepositoryPorta {
+public class CadastroDeCartaRepository implements CadastroDeCartaRepositoryPorta {
 	private SpringCadastroDeCartaRepository springCadastroDeCartaRepository;
 	private BuscaDeBaralhoRepositoryPorta buscaDeBaralhoRepositoryPorta;
 
-	public CartaRepository(SpringCadastroDeCartaRepository springCadastroDeCartaRepository,
+	public CadastroDeCartaRepository(SpringCadastroDeCartaRepository springCadastroDeCartaRepository,
 			BuscaDeBaralhoRepositoryPorta buscaDeBaralhoRepositoryPorta) {
 		this.springCadastroDeCartaRepository = springCadastroDeCartaRepository;
 		this.buscaDeBaralhoRepositoryPorta = buscaDeBaralhoRepositoryPorta;
