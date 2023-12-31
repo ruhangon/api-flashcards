@@ -22,7 +22,7 @@ public class CadastroDeBaralhoServiceImpl implements CadastroDeBaralhoServicePor
 	public String cadastrarBaralho(CadastroDeBaralhoDTO cadastroDeBaralhoDTO) {
 		Baralho baralho = new Baralho(cadastroDeBaralhoDTO);
 		cadastroDeBaralhoRepositoryPorta.save(baralho);
-		cadastroDeCartaServicePorta.cadastrarCartas(cadastroDeBaralhoDTO.baralho().cartas(), baralho.getId());
+		cadastroDeCartaServicePorta.cadastrarCartas(cadastroDeBaralhoDTO.getBaralho().getCartas(), baralho.getId());
 		return HttpStatus.CREATED.getReasonPhrase();
 	}
 

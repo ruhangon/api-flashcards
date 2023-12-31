@@ -19,7 +19,7 @@ public class CadastroDeCartaServiceImpl implements CadastroDeCartaServicePorta {
 	@Override
 	public void cadastrarCartas(List<TextoCartaDTO> cartas, Long idBaralho) {
 		cartas.forEach((TextoCartaDTO textoCartaDTO) -> {
-			Carta carta = new Carta(textoCartaDTO.frente(), textoCartaDTO.tras(), VALOR_INICIAL_DE_FILA_PARA_NOVA_CARTA);
+			Carta carta = new Carta(textoCartaDTO.getFrente(), textoCartaDTO.getTras(), VALOR_INICIAL_DE_FILA_PARA_NOVA_CARTA);
 			cadastroDeCartaRepositoryPorta.save(carta, idBaralho);
 		});
 	}

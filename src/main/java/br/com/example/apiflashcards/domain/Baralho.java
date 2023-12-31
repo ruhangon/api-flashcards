@@ -13,7 +13,7 @@ public class Baralho {
 	}
 
 	public Baralho(CadastroDeBaralhoDTO cadastroDeBaralhoDTO) {
-		this.nome = cadastroDeBaralhoDTO.baralho().nome();
+		this.nome = cadastroDeBaralhoDTO.getBaralho().getNome();
 	}
 
     public Long getId() {
