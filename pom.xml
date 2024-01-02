@@ -54,6 +54,18 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.pitest</groupId>
+			<artifactId>pitest</artifactId>
+			<version>1.8.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.pitest</groupId>
+			<artifactId>pitest-junit5-plugin</artifactId>
+			<version>0.15</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -73,6 +85,20 @@
 						--add-opens=java.base/java.lang=ALL-UNNAMED
 						--add-opens=java.base/java.util=ALL-UNNAMED
 					</argLine>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>1.8.0</version>
+				<configuration>
+					<excludedClasses>
+						<param>br.com.example.apiflashcards.ApiflashcardsApplication.java</param>
+						<param>br.com.example.apiflashcards.adapter.in.model.dto.*</param>
+						<param>br.com.example.apiflashcards.adapter.out.entity.*</param>
+						<param>br.com.example.apiflashcards.config.*</param>
+					</excludedClasses>
 				</configuration>
 			</plugin>
 		</plugins>

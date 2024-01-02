@@ -12,6 +12,7 @@ A API de flashcards é uma API que visa auxiliar no estudo usando flashcards. O 
 * Maven
 * MySQL
 * Testes unitários usando junit e mockito
+* Testes de mutação usando pitest
 
 ## Desenvolvimento
 
