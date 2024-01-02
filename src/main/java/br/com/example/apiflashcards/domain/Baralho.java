@@ -2,7 +2,7 @@ package br.com.example.apiflashcards.domain;
 
 import java.util.List;
 
-import br.com.example.apiflashcards.adapter.in.model.dto.CadastroDeBaralhoDTO;
+import br.com.example.apiflashcards.adapter.in.model.request.CadastroDeBaralhoRequestDTO;
 
 public class Baralho {
 	private Long id;
@@ -12,7 +12,7 @@ public class Baralho {
 	public Baralho() {
 	}
 
-	public Baralho(CadastroDeBaralhoDTO cadastroDeBaralhoDTO) {
+	public Baralho(CadastroDeBaralhoRequestDTO cadastroDeBaralhoDTO) {
 		this.nome = cadastroDeBaralhoDTO.getBaralho().getNome();
 	}
 

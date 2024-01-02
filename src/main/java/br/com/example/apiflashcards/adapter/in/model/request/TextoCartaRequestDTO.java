@@ -1,6 +1,6 @@
-package br.com.example.apiflashcards.adapter.in.model.dto;
+package br.com.example.apiflashcards.adapter.in.model.request;
 
-public class TextoCartaDTO {
+public class TextoCartaRequestDTO {
     private String frente;
     private String tras;
 

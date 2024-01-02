@@ -95,7 +95,6 @@
 				<configuration>
 					<excludedClasses>
 						<param>br.com.example.apiflashcards.ApiflashcardsApplication.java</param>
-						<param>br.com.example.apiflashcards.adapter.in.model.dto.*</param>
 						<param>br.com.example.apiflashcards.adapter.out.entity.*</param>
 						<param>br.com.example.apiflashcards.config.*</param>
 					</excludedClasses>

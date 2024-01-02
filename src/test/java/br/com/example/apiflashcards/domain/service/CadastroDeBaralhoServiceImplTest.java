@@ -9,9 +9,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
-import br.com.example.apiflashcards.adapter.in.model.dto.CadastroDeBaralhoDTO;
-import br.com.example.apiflashcards.adapter.in.model.dto.InformacoesParaCadastroDeBaralhoDTO;
-import br.com.example.apiflashcards.adapter.in.model.dto.TextoCartaDTO;
+import br.com.example.apiflashcards.adapter.in.model.request.CadastroDeBaralhoRequestDTO;
+import br.com.example.apiflashcards.adapter.in.model.request.InformacoesParaCadastroDeBaralhoRequestDTO;
+import br.com.example.apiflashcards.adapter.in.model.request.TextoCartaRequestDTO;
 import br.com.example.apiflashcards.domain.classes.in.FakeCadastroDeCartaServiceImpl;
 import br.com.example.apiflashcards.domain.classes.out.FakeCadastroDeBaralhoRepositoryImpl;
 
@@ -19,18 +19,18 @@ public class CadastroDeBaralhoServiceImplTest {
 	private FakeCadastroDeBaralhoRepositoryImpl cadastroDeBaralhoRepository;
 	private FakeCadastroDeCartaServiceImpl cadastroDeCartaService;
 
-	private CadastroDeBaralhoDTO cadastroDeBaralhoDTO;
+	private CadastroDeBaralhoRequestDTO cadastroDeBaralhoDTO;
 
 	@BeforeEach
 	public void setup() {
 		cadastroDeBaralhoRepository = new FakeCadastroDeBaralhoRepositoryImpl();
 		cadastroDeCartaService = new FakeCadastroDeCartaServiceImpl();
-		cadastroDeBaralhoDTO = new CadastroDeBaralhoDTO();
+		cadastroDeBaralhoDTO = new CadastroDeBaralhoRequestDTO();
 	}
 
 	@Test
 	void deve_testar_cadastro_de_um_baralho_com_sucesso() {
-		InformacoesParaCadastroDeBaralhoDTO baralhoDTO = new InformacoesParaCadastroDeBaralhoDTO();
+		InformacoesParaCadastroDeBaralhoRequestDTO baralhoDTO = new InformacoesParaCadastroDeBaralhoRequestDTO();
 		baralhoDTO.setNome("Meu baralho");
 		baralhoDTO.setCartas(criarListaDeCartas());
 		cadastroDeBaralhoDTO.setBaralho(baralhoDTO);
@@ -43,13 +43,13 @@ public class CadastroDeBaralhoServiceImplTest {
 		assertEquals(serviceResponse, HttpStatus.CREATED.getReasonPhrase());
 	}
 
-	private List<TextoCartaDTO> criarListaDeCartas() {
-		List<TextoCartaDTO> listaCartas = new ArrayList<>();
-		TextoCartaDTO carta1 = new TextoCartaDTO();
+	private List<TextoCartaRequestDTO> criarListaDeCartas() {
+		List<TextoCartaRequestDTO> listaCartas = new ArrayList<>();
+		TextoCartaRequestDTO carta1 = new TextoCartaRequestDTO();
 		carta1.setFrente("info para frente 1");
 		carta1.setTras("info para tras 1");
 		listaCartas.add(carta1);
-		TextoCartaDTO carta2 = new TextoCartaDTO();
+		TextoCartaRequestDTO carta2 = new TextoCartaRequestDTO();
 		carta2.setFrente("info para frente 2");
 		carta2.setTras("info para tras 2");
 		listaCartas.add(carta2);
