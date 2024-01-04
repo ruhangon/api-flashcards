@@ -5,6 +5,6 @@ import java.util.List;
 import br.com.example.apiflashcards.adapter.in.model.request.TextoCartaRequestDTO;
 
 public interface CadastroDeCartaServicePorta {
-	void cadastrarCartas(List<TextoCartaRequestDTO> cartas, Long idBaralho);
+	String cadastrarCartas(List<TextoCartaRequestDTO> cartas, Long idBaralho);
 
 }

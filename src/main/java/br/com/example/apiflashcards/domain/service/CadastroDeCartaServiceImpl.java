@@ -2,6 +2,8 @@ package br.com.example.apiflashcards.domain.service;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+
 import br.com.example.apiflashcards.adapter.in.model.request.TextoCartaRequestDTO;
 import br.com.example.apiflashcards.domain.Carta;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeCartaServicePorta;
@@ -17,11 +19,13 @@ public class CadastroDeCartaServiceImpl implements CadastroDeCartaServicePorta {
 	}
 
 	@Override
-	public void cadastrarCartas(List<TextoCartaRequestDTO> cartas, Long idBaralho) {
+	public String cadastrarCartas(List<TextoCartaRequestDTO> cartas, Long idBaralho) {
 		cartas.forEach((TextoCartaRequestDTO textoCartaDTO) -> {
-			Carta carta = new Carta(textoCartaDTO.getFrente(), textoCartaDTO.getTras(), VALOR_INICIAL_DE_FILA_PARA_NOVA_CARTA);
+			Carta carta = new Carta(textoCartaDTO.getFrente(), textoCartaDTO.getTras(),
+					VALOR_INICIAL_DE_FILA_PARA_NOVA_CARTA);
 			cadastroDeCartaRepositoryPorta.save(carta, idBaralho);
 		});
+		return HttpStatus.CREATED.getReasonPhrase();
 	}
 
 }

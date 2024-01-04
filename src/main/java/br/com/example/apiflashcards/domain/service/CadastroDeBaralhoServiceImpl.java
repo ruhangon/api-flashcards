@@ -1,7 +1,5 @@
 package br.com.example.apiflashcards.domain.service;
 
-import org.springframework.http.HttpStatus;
-
 import br.com.example.apiflashcards.adapter.in.model.request.CadastroDeBaralhoComCartasRequestDTO;
 import br.com.example.apiflashcards.domain.Baralho;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeBaralhoServicePorta;
@@ -22,8 +20,8 @@ public class CadastroDeBaralhoServiceImpl implements CadastroDeBaralhoServicePor
 	public String cadastrarBaralhoComCartas(CadastroDeBaralhoComCartasRequestDTO cadastroDeBaralhoDTO) {
 		Baralho baralho = new Baralho(cadastroDeBaralhoDTO);
 		cadastroDeBaralhoRepositoryPorta.save(baralho);
-		cadastroDeCartaServicePorta.cadastrarCartas(cadastroDeBaralhoDTO.getBaralho().getCartas(), baralho.getId());
-		return HttpStatus.CREATED.getReasonPhrase();
+		return cadastroDeCartaServicePorta.cadastrarCartas(cadastroDeBaralhoDTO.getBaralho().getCartas(),
+				baralho.getId());
 	}
 
 }
