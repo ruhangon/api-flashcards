@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
-import br.com.example.apiflashcards.adapter.in.model.request.CadastroDeBaralhoRequestDTO;
+import br.com.example.apiflashcards.adapter.in.model.request.CadastroDeBaralhoComCartasRequestDTO;
 import br.com.example.apiflashcards.adapter.in.model.request.InformacoesParaCadastroDeBaralhoRequestDTO;
 import br.com.example.apiflashcards.adapter.in.model.request.TextoCartaRequestDTO;
 import br.com.example.apiflashcards.domain.classes.in.FakeCadastroDeCartaServiceImpl;
@@ -19,17 +19,17 @@ public class CadastroDeBaralhoServiceImplTest {
 	private FakeCadastroDeBaralhoRepositoryImpl cadastroDeBaralhoRepository;
 	private FakeCadastroDeCartaServiceImpl cadastroDeCartaService;
 
-	private CadastroDeBaralhoRequestDTO cadastroDeBaralhoDTO;
+	private CadastroDeBaralhoComCartasRequestDTO cadastroDeBaralhoDTO;
 
 	@BeforeEach
 	public void setup() {
 		cadastroDeBaralhoRepository = new FakeCadastroDeBaralhoRepositoryImpl();
 		cadastroDeCartaService = new FakeCadastroDeCartaServiceImpl();
-		cadastroDeBaralhoDTO = new CadastroDeBaralhoRequestDTO();
+		cadastroDeBaralhoDTO = new CadastroDeBaralhoComCartasRequestDTO();
 	}
 
 	@Test
-	void deve_testar_cadastro_de_um_baralho_com_sucesso() {
+	void deve_testar_cadastro_de_baralho_com_cartas_com_sucesso() {
 		InformacoesParaCadastroDeBaralhoRequestDTO baralhoDTO = new InformacoesParaCadastroDeBaralhoRequestDTO();
 		baralhoDTO.setNome("Meu baralho");
 		baralhoDTO.setCartas(criarListaDeCartas());
@@ -38,7 +38,7 @@ public class CadastroDeBaralhoServiceImplTest {
 		CadastroDeBaralhoServiceImpl cadastroDeBaralhoServiceImpl = new CadastroDeBaralhoServiceImpl(
 				cadastroDeBaralhoRepository, cadastroDeCartaService);
 
-		String serviceResponse = cadastroDeBaralhoServiceImpl.cadastrarBaralho(cadastroDeBaralhoDTO);
+		String serviceResponse = cadastroDeBaralhoServiceImpl.cadastrarBaralhoComCartas(cadastroDeBaralhoDTO);
 
 		assertEquals(serviceResponse, HttpStatus.CREATED.getReasonPhrase());
 	}

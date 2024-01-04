@@ -2,7 +2,7 @@ package br.com.example.apiflashcards.domain.service;
 
 import org.springframework.http.HttpStatus;
 
-import br.com.example.apiflashcards.adapter.in.model.request.CadastroDeBaralhoRequestDTO;
+import br.com.example.apiflashcards.adapter.in.model.request.CadastroDeBaralhoComCartasRequestDTO;
 import br.com.example.apiflashcards.domain.Baralho;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeBaralhoServicePorta;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeCartaServicePorta;
@@ -19,7 +19,7 @@ public class CadastroDeBaralhoServiceImpl implements CadastroDeBaralhoServicePor
 	}
 
 	@Override
-	public String cadastrarBaralho(CadastroDeBaralhoRequestDTO cadastroDeBaralhoDTO) {
+	public String cadastrarBaralhoComCartas(CadastroDeBaralhoComCartasRequestDTO cadastroDeBaralhoDTO) {
 		Baralho baralho = new Baralho(cadastroDeBaralhoDTO);
 		cadastroDeBaralhoRepositoryPorta.save(baralho);
 		cadastroDeCartaServicePorta.cadastrarCartas(cadastroDeBaralhoDTO.getBaralho().getCartas(), baralho.getId());

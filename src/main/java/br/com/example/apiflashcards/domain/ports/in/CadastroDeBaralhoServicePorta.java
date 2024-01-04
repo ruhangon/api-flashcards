@@ -1,8 +1,8 @@
 package br.com.example.apiflashcards.domain.ports.in;
 
-import br.com.example.apiflashcards.adapter.in.model.request.CadastroDeBaralhoRequestDTO;
+import br.com.example.apiflashcards.adapter.in.model.request.CadastroDeBaralhoComCartasRequestDTO;
 
 public interface CadastroDeBaralhoServicePorta {
-	String cadastrarBaralho(CadastroDeBaralhoRequestDTO cadastroDeBaralhoDTO);
+	String cadastrarBaralhoComCartas(CadastroDeBaralhoComCartasRequestDTO cadastroDeBaralhoDTO);
 
 }

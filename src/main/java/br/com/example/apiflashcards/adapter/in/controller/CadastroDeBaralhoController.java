@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.example.apiflashcards.adapter.in.model.request.CadastroDeBaralhoRequestDTO;
+import br.com.example.apiflashcards.adapter.in.model.request.CadastroDeBaralhoComCartasRequestDTO;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeBaralhoServicePorta;
 import jakarta.validation.Valid;
 
@@ -21,8 +21,8 @@ public class CadastroDeBaralhoController {
 	}
 
 	@PostMapping(value = "/cadastrar")
-	public ResponseEntity<String> cadastrarBaralho(@RequestBody @Valid CadastroDeBaralhoRequestDTO cadastroDeBaralhoDTO) {
-		String cadastroDeBaralhoResponse = cadastroDeBaralhoServicePorta.cadastrarBaralho(cadastroDeBaralhoDTO);
+	public ResponseEntity<String> cadastrarBaralhoComCartas(@RequestBody @Valid CadastroDeBaralhoComCartasRequestDTO cadastroDeBaralhoDTO) {
+		String cadastroDeBaralhoResponse = cadastroDeBaralhoServicePorta.cadastrarBaralhoComCartas(cadastroDeBaralhoDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(cadastroDeBaralhoResponse);
 	}
 
