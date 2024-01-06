@@ -5,7 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.example.apiflashcards.adapter.out.entity.BaralhoEntity;
 import br.com.example.apiflashcards.adapter.out.entity.CartaEntity;
-import br.com.example.apiflashcards.domain.Carta;
+import br.com.example.apiflashcards.domain.model.Carta;
 import br.com.example.apiflashcards.domain.ports.out.BuscaDeBaralhoRepositoryPorta;
 import br.com.example.apiflashcards.domain.ports.out.CadastroDeCartaRepositoryPorta;
 

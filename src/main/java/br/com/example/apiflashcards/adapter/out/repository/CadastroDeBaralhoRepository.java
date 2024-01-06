@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.example.apiflashcards.adapter.out.entity.BaralhoEntity;
-import br.com.example.apiflashcards.domain.Baralho;
+import br.com.example.apiflashcards.domain.model.Baralho;
 import br.com.example.apiflashcards.domain.ports.out.CadastroDeBaralhoRepositoryPorta;
 
 @Component

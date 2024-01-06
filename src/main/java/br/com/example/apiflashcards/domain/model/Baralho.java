@@ -1,4 +1,4 @@
-package br.com.example.apiflashcards.domain;
+package br.com.example.apiflashcards.domain.model;
 
 import java.util.List;
 

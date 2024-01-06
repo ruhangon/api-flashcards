@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 
 import br.com.example.apiflashcards.adapter.in.model.request.TextoCartaRequestDTO;
-import br.com.example.apiflashcards.domain.Carta;
+import br.com.example.apiflashcards.domain.model.Carta;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeCartaServicePorta;
 import br.com.example.apiflashcards.domain.ports.out.CadastroDeCartaRepositoryPorta;
 
