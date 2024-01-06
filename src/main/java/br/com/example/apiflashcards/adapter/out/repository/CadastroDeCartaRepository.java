@@ -22,10 +22,12 @@ public class CadastroDeCartaRepository implements CadastroDeCartaRepositoryPorta
 
 	@Transactional
 	@Override
-	public void save(Carta carta, Long idBaralho) {
+	public Carta save(Carta carta, Long idBaralho) {
 		BaralhoEntity baralhoEntity = buscaDeBaralhoRepositoryPorta.getById(idBaralho);
 		CartaEntity cartaEntity = new CartaEntity(carta.getFrente(), carta.getTras(), carta.getFila(), baralhoEntity);
-		springCadastroDeCartaRepository.save(cartaEntity);
+		cartaEntity = springCadastroDeCartaRepository.save(cartaEntity);
+		carta.setId(cartaEntity.getId());
+		return carta;
 	}
 
 }

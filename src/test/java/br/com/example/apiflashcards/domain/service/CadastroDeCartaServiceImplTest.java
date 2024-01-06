@@ -1,6 +1,8 @@
 package br.com.example.apiflashcards.domain.service;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +35,20 @@ public class CadastroDeCartaServiceImplTest {
 		String serviceResponse = cadastroDeCartaServiceImpl.cadastrarCartas(listaCartas, ID_BARALHO);
 
 		assertEquals(serviceResponse, HttpStatus.CREATED.getReasonPhrase());
+
+		assertAll(() -> assertNotNull(cadastroDeCartaRepository.getCartas().get(0).getId()),
+				() -> assertEquals(cadastroDeCartaRepository.getCartas().get(0).getFrente(),
+						listaCartas.get(0).getFrente()),
+				() -> assertEquals(cadastroDeCartaRepository.getCartas().get(0).getTras(),
+						listaCartas.get(0).getTras()),
+				() -> assertNotNull(cadastroDeCartaRepository.getCartas().get(0).getFila()));
+
+		assertAll(() -> assertNotNull(cadastroDeCartaRepository.getCartas().get(1).getId()),
+				() -> assertEquals(cadastroDeCartaRepository.getCartas().get(1).getFrente(),
+						listaCartas.get(1).getFrente()),
+				() -> assertEquals(cadastroDeCartaRepository.getCartas().get(1).getTras(),
+						listaCartas.get(1).getTras()),
+				() -> assertNotNull(cadastroDeCartaRepository.getCartas().get(1).getFila()));
 	}
 
 	private List<TextoCartaRequestDTO> criarListaDeCartas() {
