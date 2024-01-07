@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
@@ -28,6 +29,7 @@ public class CadastroDeBaralhoServiceImplTest {
 		cadastroDeBaralhoDTO = new CadastroDeBaralhoComCartasRequestDTO();
 	}
 
+	@DisplayName("realiza o cadastro de um baralho com duas cartas usando classes fake, com sucesso")
 	@Test
 	void deve_testar_cadastro_de_baralho_com_cartas_com_sucesso() {
 		InformacoesParaCadastroDeBaralhoRequestDTO baralhoDTO = new InformacoesParaCadastroDeBaralhoRequestDTO();

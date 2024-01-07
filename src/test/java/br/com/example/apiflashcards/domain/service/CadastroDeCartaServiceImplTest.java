@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
@@ -25,6 +26,7 @@ public class CadastroDeCartaServiceImplTest {
 		cadastroDeCartaRepository = new FakeCadastroDeCartaRepositoryImpl();
 	}
 
+	@DisplayName("realiza o cadastro de duas cartas em um baralho usando classe fake, com sucesso")
 	@Test
 	void deve_cadastrar_lista_de_cartas_em_um_baralho_com_sucesso() {
 		listaCartas = criarListaDeCartas();
