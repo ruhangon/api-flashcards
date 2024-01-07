@@ -1,6 +1,8 @@
-package br.com.example.apiflashcards.domain.service;
+package br.com.example.apiflashcards.adapter.in.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,41 +10,50 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import br.com.example.apiflashcards.adapter.in.model.dto.CadastroDeBaralhoComCartasRequestDTO;
 import br.com.example.apiflashcards.adapter.in.model.dto.InformacoesParaCadastroDeBaralhoRequestDTO;
 import br.com.example.apiflashcards.adapter.in.model.dto.TextoCartaRequestDTO;
-import br.com.example.apiflashcards.domain.classes.in.FakeCadastroDeCartaServiceImpl;
-import br.com.example.apiflashcards.domain.classes.out.FakeCadastroDeBaralhoRepositoryImpl;
+import br.com.example.apiflashcards.domain.ports.in.CadastroDeBaralhoServicePorta;
 
-public class CadastroDeBaralhoServiceImplTest {
-	private FakeCadastroDeBaralhoRepositoryImpl cadastroDeBaralhoRepository;
-	private FakeCadastroDeCartaServiceImpl cadastroDeCartaService;
+@ExtendWith(MockitoExtension.class)
+public class CadastroDeBaralhoControllerTest {
+	@Mock
+	private CadastroDeBaralhoServicePorta mkService;
+
+	@InjectMocks
+	private CadastroDeBaralhoController controller;
 
 	private CadastroDeBaralhoComCartasRequestDTO cadastroDeBaralhoDTO;
 
 	@BeforeEach
 	public void setup() {
-		cadastroDeBaralhoRepository = new FakeCadastroDeBaralhoRepositoryImpl();
-		cadastroDeCartaService = new FakeCadastroDeCartaServiceImpl();
 		cadastroDeBaralhoDTO = new CadastroDeBaralhoComCartasRequestDTO();
 	}
 
-	@DisplayName("realiza o cadastro de um baralho com duas cartas usando classes fake, com sucesso")
+	@DisplayName("realiza o cadastro de um baralho com duas cartas usando mock, com sucesso")
 	@Test
-	void deve_testar_cadastro_de_baralho_com_cartas_com_sucesso() {
+	void deve_cadastrar_um_baralho_com_duas_cartas_com_sucesso() {
 		InformacoesParaCadastroDeBaralhoRequestDTO baralhoDTO = new InformacoesParaCadastroDeBaralhoRequestDTO();
 		baralhoDTO.setNome("Meu baralho");
 		baralhoDTO.setCartas(criarListaDeCartas());
 		cadastroDeBaralhoDTO.setBaralho(baralhoDTO);
 
-		CadastroDeBaralhoServiceImpl cadastroDeBaralhoServiceImpl = new CadastroDeBaralhoServiceImpl(
-				cadastroDeBaralhoRepository, cadastroDeCartaService);
+		when(mkService.cadastrarBaralhoComCartas(cadastroDeBaralhoDTO))
+				.thenReturn(HttpStatus.CREATED.getReasonPhrase());
 
-		String serviceResponse = cadastroDeBaralhoServiceImpl.cadastrarBaralhoComCartas(cadastroDeBaralhoDTO);
+		ResponseEntity<String> controllerResponse = controller.cadastrarBaralhoComCartas(cadastroDeBaralhoDTO);
 
-		assertEquals(serviceResponse, HttpStatus.CREATED.getReasonPhrase());
+		assertEquals(controllerResponse.getStatusCode(), HttpStatus.CREATED);
+		assertEquals(controllerResponse.getBody(), HttpStatus.CREATED.getReasonPhrase());
+
+		verify(mkService).cadastrarBaralhoComCartas(cadastroDeBaralhoDTO);
 	}
 
 	private List<TextoCartaRequestDTO> criarListaDeCartas() {

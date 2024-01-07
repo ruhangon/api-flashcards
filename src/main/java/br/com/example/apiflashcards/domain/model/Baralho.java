@@ -2,7 +2,7 @@ package br.com.example.apiflashcards.domain.model;
 
 import java.util.List;
 
-import br.com.example.apiflashcards.adapter.in.model.request.CadastroDeBaralhoComCartasRequestDTO;
+import br.com.example.apiflashcards.adapter.in.model.dto.CadastroDeBaralhoComCartasRequestDTO;
 
 public class Baralho {
 	private Long id;

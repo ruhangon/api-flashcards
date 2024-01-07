@@ -1,6 +1,6 @@
 package br.com.example.apiflashcards.domain.service;
 
-import br.com.example.apiflashcards.adapter.in.model.request.CadastroDeBaralhoComCartasRequestDTO;
+import br.com.example.apiflashcards.adapter.in.model.dto.CadastroDeBaralhoComCartasRequestDTO;
 import br.com.example.apiflashcards.domain.model.Baralho;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeBaralhoServicePorta;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeCartaServicePorta;

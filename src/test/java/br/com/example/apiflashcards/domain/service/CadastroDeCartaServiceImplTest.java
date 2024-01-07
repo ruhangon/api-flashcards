@@ -12,7 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
-import br.com.example.apiflashcards.adapter.in.model.request.TextoCartaRequestDTO;
+import br.com.example.apiflashcards.adapter.in.model.dto.TextoCartaRequestDTO;
 import br.com.example.apiflashcards.domain.classes.out.FakeCadastroDeCartaRepositoryImpl;
 
 public class CadastroDeCartaServiceImplTest {

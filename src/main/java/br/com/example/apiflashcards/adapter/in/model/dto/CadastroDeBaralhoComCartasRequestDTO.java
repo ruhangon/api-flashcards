@@ -1,4 +1,4 @@
-package br.com.example.apiflashcards.adapter.in.model.request;
+package br.com.example.apiflashcards.adapter.in.model.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
