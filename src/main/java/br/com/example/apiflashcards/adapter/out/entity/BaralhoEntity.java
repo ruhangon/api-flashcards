@@ -24,6 +24,9 @@ public class BaralhoEntity {
 	@OneToMany(mappedBy = "baralho")
 	private List<CartaEntity> cartas = new ArrayList<>();
 
+	public BaralhoEntity() {
+	}
+
 	public BaralhoEntity(String nome) {
 		this.nome = nome;
 	}
