@@ -4,13 +4,15 @@
 
 A API de flashcards é uma API que visa auxiliar no estudo usando flashcards. O usuário terá como cadastrar baralhos sobre temas diversos, consultar informações de todos os seus baralhos, consultar as cartas de um baralho específico e também conseguirá atualizar os baralhos com mais cartas, se for do seu interesse. Para isso é usado spring boot 3 e java 17, em um projeto que usa arquitetura hexagonal.
 
+O código terá uma grande cobertura de testes unitários, além de também ter cobertura de testes de integração.
+
 ## Tecnologias
 
 * Java
 * Spring boot
-* Spring data JPA
 * Maven
 * MySQL
+* Spring data JPA
 * Testes unitários usando junit e mockito
 * Testes de mutação usando pitest
 
@@ -32,11 +34,15 @@ Haverá uma porta para ser implementada pela service de cadastro de baralho, par
 
 #### Portas de saída
 
-Haverá uma porta para ser implementada pela repository de cadastro de baralho, para definir que essa precisará ter um método de cadastro no banco de dados. Também haverá uma porta para ser implementada pela repository de cadastro de carta, para definir que essa também terá um método de cadastro no banco de dados.
+Haverá uma porta para ser implementada pela repository de cadastro de baralho, para definir que essa precisará ter um método de cadastro no banco de dados. Também haverá uma porta para ser implementada pela repository de cadastro de carta, para definir que essa também terá um método de cadastro no banco de dados. Além dessas haverá uma porta para ser implementada pela repository de busca de baralho, para definir que essa terá um método de busca de baralho.
 
 #### services
 
-CadastroDeBaralhoService, que contem o método para salvar um novo baralho.
+CadastroDeBaralhoServiceImpl, que contem o método para salvar um novo baralho.
+
+CadastroDeCartaServiceImpl, que contem o método para salvar uma nova carta.
+
+As services precisam ter cobertura de linha e cobertura de mutação alcançando 100% usando o pitest.
 
 ### Adaptador
 
@@ -64,13 +70,17 @@ Exemplo de body passado nesse post =
 
 E a response de sucesso será um status 201, com o body de status 201 CREATED.
 
+As controllers precisam ter cobertura de linha e cobertura de mutação alcançando 100% usando o pitest.
+
 #### DTOs
 
-CadastroDeBaralhoDTO, que contem um nome do tipo String não nulo ou vazio e uma lista de TextosCarta (que contem uma frente do tipo String e um tras do tipo String) com no mínimo 1 carta
+Criar as DTOs necessárias para atender ao programa.
 
 #### repositories
 
 Criar as repositories necessárias para o funcionamento do código, usando o Spring data JPA. Também devem ser criadas as entidades necessárias.
+
+As repositories precisam ter cobertura de linha e cobertura de mutação alcançando 100% usando o pitest.
 
 ### Config
 
