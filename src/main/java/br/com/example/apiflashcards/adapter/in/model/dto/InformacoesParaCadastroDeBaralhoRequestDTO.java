@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class InformacoesParaCadastroDeBaralhoRequestDTO {
-    @NotBlank(message = "O campo nome do baralho ão pode ser nulo ou vazio")
+    @NotBlank(message = "O campo nome do baralho não pode ser nulo ou vazio")
     private String nome;
     @Size(min = 1, message = "O baralho deve ter pelo menos uma carta")
     private List<TextoCartaRequestDTO> cartas;
