@@ -54,7 +54,7 @@ As services precisam ter cobertura de linha e cobertura de mutação alcançando
 
 #### Controllers
 
-* CadastroDeBaralhoController, onde é possível se cadastrar um novo baralho recebido por parâmetro com suas cartas, no path post api-flashcards/baralhos/cadastrar
+* CadastroDeBaralhoController, onde é possível se cadastrar um novo baralho recebido por parâmetro com suas cartas, no path post api-flashcards/baralho/cadastrar
 
 Exemplo de body passado nesse post =
 

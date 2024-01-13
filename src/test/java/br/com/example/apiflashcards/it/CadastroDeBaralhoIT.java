@@ -53,7 +53,7 @@ public class CadastroDeBaralhoIT {
 	@DisplayName("realiza teste integrado para validar se cadastro de baralho com cartas no banco de dados funciona")
 	@Test
 	void deve_cadastrar_um_baralho_com_duas_cartas_com_sucesso() throws Exception {
-		mockMvc.perform(post("/baralhos/cadastrar").contentType("application/json")
+		mockMvc.perform(post("/baralho/cadastrar").contentType("application/json")
 				.content(objectMapper.writeValueAsString(cadastroDeBaralhoDTO))).andExpect(status().isCreated());
 	}
 
