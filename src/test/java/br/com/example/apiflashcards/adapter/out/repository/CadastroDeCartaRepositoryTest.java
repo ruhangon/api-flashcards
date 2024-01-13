@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,6 +20,7 @@ import br.com.example.apiflashcards.domain.model.Carta;
 import br.com.example.apiflashcards.domain.ports.out.BuscaDeBaralhoRepositoryPorta;
 
 @ExtendWith(MockitoExtension.class)
+@Tag("unit-test")
 public class CadastroDeCartaRepositoryTest {
 	@Mock
 	private SpringCadastroDeCartaRepository mkSpringCadastroDeCartaRepository;

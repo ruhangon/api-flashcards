@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
@@ -16,6 +17,7 @@ import br.com.example.apiflashcards.adapter.in.model.dto.TextoCartaRequestDTO;
 import br.com.example.apiflashcards.domain.classes.in.FakeCadastroDeCartaServiceImpl;
 import br.com.example.apiflashcards.domain.classes.out.FakeCadastroDeBaralhoRepositoryImpl;
 
+@Tag("unit-test")
 public class CadastroDeBaralhoServiceImplTest {
 	private FakeCadastroDeBaralhoRepositoryImpl cadastroDeBaralhoRepository;
 	private FakeCadastroDeCartaServiceImpl cadastroDeCartaService;

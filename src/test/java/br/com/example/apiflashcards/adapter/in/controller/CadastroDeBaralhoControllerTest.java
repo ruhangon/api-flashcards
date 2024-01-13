@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -23,6 +24,7 @@ import br.com.example.apiflashcards.adapter.in.model.dto.TextoCartaRequestDTO;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeBaralhoServicePorta;
 
 @ExtendWith(MockitoExtension.class)
+@Tag("unit-test")
 public class CadastroDeBaralhoControllerTest {
 	@Mock
 	private CadastroDeBaralhoServicePorta mkService;
