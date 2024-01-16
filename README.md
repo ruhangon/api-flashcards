@@ -2,7 +2,7 @@
 
 ## Introdução
 
-A API de flashcards é uma API que visa auxiliar no estudo usando flashcards. O usuário terá como cadastrar baralhos sobre temas diversos, consultar informações de todos os seus baralhos, consultar as cartas de um baralho específico, atualizar a fila de uma carta e também conseguirá atualizar os baralhos com mais cartas, se for do seu interesse. Para isso é usado spring boot 3 e java 17, em um projeto que usa arquitetura hexagonal.
+A API de flashcards é uma API que visa auxiliar no estudo usando flashcards. O usuário terá como cadastrar baralhos sobre temas diversos, consultar informações de todos os seus baralhos, consultar a próxima carta a ser estudada de um baralho específico, atualizar a fila de uma carta e também conseguirá atualizar os baralhos com mais cartas, se for do seu interesse. Para isso é usado spring boot 3 e java 17, em um projeto que usa arquitetura hexagonal.
 
 O código terá uma grande cobertura de testes unitários, além de também ter cobertura de testes de integração.
 
