@@ -22,6 +22,9 @@ public class CartaEntity {
 	@JoinColumn(name = "baralho_id")
 	private BaralhoEntity baralho;
 
+	public CartaEntity() {
+	}
+
 	public CartaEntity(String frente, String tras, Integer fila, BaralhoEntity baralhoEntity) {
 		this.frente = frente;
 		this.tras = tras;

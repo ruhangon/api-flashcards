@@ -2,7 +2,7 @@
 
 ## Introdução
 
-A API de flashcards é uma API que visa auxiliar no estudo usando flashcards. O usuário terá como cadastrar baralhos sobre temas diversos, consultar informações de todos os seus baralhos, consultar as cartas de um baralho específico e também conseguirá atualizar os baralhos com mais cartas, se for do seu interesse. Para isso é usado spring boot 3 e java 17, em um projeto que usa arquitetura hexagonal.
+A API de flashcards é uma API que visa auxiliar no estudo usando flashcards. O usuário terá como cadastrar baralhos sobre temas diversos, consultar informações de todos os seus baralhos, consultar a próxima carta a ser estudada de um baralho específico, atualizar a fila de uma carta e também conseguirá atualizar os baralhos com mais cartas, se for do seu interesse. Para isso é usado spring boot 3 e java 17, em um projeto que usa arquitetura hexagonal.
 
 O código terá uma grande cobertura de testes unitários, além de também ter cobertura de testes de integração.
 
@@ -30,17 +30,23 @@ Carta terá um id, uma frente, uma trás e uma fila.
 
 #### Portas de entrada
 
-Haverá uma porta para ser implementada pela service de cadastro de baralho, para definir que essa precisará ter um método de cadastro. Também haverá uma porta para ser implementada pela service de cadastro de carta, para definir que essa também terá um método de cadastro.
+* Haverá uma porta para ser implementada pela service de cadastro de baralho, para definir que essa precisará ter um método de cadastro. 
+* Haverá uma porta para ser implementada pela service de cadastro de carta, para definir que essa também terá um método de cadastro.
+* Haverá uma porta para ser implementada pela service de atualização de carta, para definir que essa terá um método de atualização de fila da carta.
 
 #### Portas de saída
 
-Haverá uma porta para ser implementada pela repository de cadastro de baralho, para definir que essa precisará ter um método de cadastro no banco de dados. Também haverá uma porta para ser implementada pela repository de cadastro de carta, para definir que essa também terá um método de cadastro no banco de dados. Além dessas haverá uma porta para ser implementada pela repository de busca de baralho, para definir que essa terá um método de busca de baralho.
+* Haverá uma porta para ser implementada pela repository de cadastro de baralho, para definir que essa precisará ter um método de cadastro no banco de dados. 
+* Haverá uma porta para ser implementada pela repository de cadastro de carta, para definir que essa também terá um método de cadastro no banco de dados. 
+* Haverá uma porta para ser implementada pela repository de busca de baralho, para definir que essa terá um método de busca de baralho no banco de dados.
+* Haverá uma porta para ser implementada pela repository de atualização de carta, para definir que essa terá um método de atualização de carta no banco de dados.
+* Haverá uma porta para ser implementada pela repository de busca de carta, para definir que essa terá um método de busca de fila da carta no banco de dados.
 
 #### services
 
-CadastroDeBaralhoServiceImpl, que contem o método para salvar um novo baralho.
-
-CadastroDeCartaServiceImpl, que contem o método para salvar uma nova carta.
+* CadastroDeBaralhoServiceImpl, que contem o método para salvar um novo baralho.
+* CadastroDeCartaServiceImpl, que contem o método para salvar uma nova carta.
+* AtualizacaoDeCartaServiceImpl, que contem o método para atualizar a fila de uma carta.
 
 As services precisam ter cobertura de linha e cobertura de mutação alcançando 100% usando o pitest.
 
@@ -48,7 +54,7 @@ As services precisam ter cobertura de linha e cobertura de mutação alcançando
 
 #### Controllers
 
-CadastroDeBaralhoController, onde é possível se cadastrar um novo baralho recebido por parâmetro com suas cartas, no path post api-flashcards/baralhos/cadastrar
+* CadastroDeBaralhoController, onde é possível se cadastrar um novo baralho recebido por parâmetro com suas cartas, no path post api-flashcards/baralho/cadastrar
 
 Exemplo de body passado nesse post =
 
@@ -69,6 +75,18 @@ Exemplo de body passado nesse post =
 }
 
 E a response de sucesso será um status 201, com o body de status 201 CREATED.
+
+* AtualizacaoDeCartaController, onde é possível se atualizar a fila de uma carta através da avaliação do usuário recebida no corpo da requisição e também no id da carta recebido como parâmetro do path, no path patch api-flashcards/carta/{id-carta}/fila/atualizar.
+
+Exemplo de body passado nesse patch =
+
+{
+    "carta": {
+        "avaliacao": 1
+    }
+}
+
+E a response de sucesso será um status 200, com o body de status 200 OK.
 
 As controllers precisam ter cobertura de linha e cobertura de mutação alcançando 100% usando o pitest.
 
