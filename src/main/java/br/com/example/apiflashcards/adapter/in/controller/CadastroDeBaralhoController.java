@@ -12,7 +12,7 @@ import br.com.example.apiflashcards.domain.ports.in.CadastroDeBaralhoServicePort
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/baralhos")
+@RequestMapping("/baralho")
 public class CadastroDeBaralhoController {
 	private final CadastroDeBaralhoServicePorta cadastroDeBaralhoServicePorta;
 
