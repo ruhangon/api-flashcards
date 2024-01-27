@@ -7,4 +7,6 @@ public interface BuscaDeCartaRepositoryPorta {
 
 	Integer findFila(Long idCarta);
 
+	Long countCartasBaralho(Long idBaralho);
+
 }

@@ -28,18 +28,20 @@ public class BuscaDeCartaRepositoryTest {
 
 	private static final Long ID_CARTA = 1L;
 	private static final Integer INFO_FILA = 1;
+	private static final Long ID_BARALHO = 1L;
+	private static final Long QUANTIDADE_CARTAS_DO_BARALHO = 2L;
 
 	@BeforeEach
 	public void setup() {
 		cartaEntity = new CartaEntity();
 		cartaEntity.setFila(INFO_FILA);
-
-		when(mkSpringBuscaDeCartaRepository.getById(ID_CARTA)).thenReturn(cartaEntity);
 	}
 
 	@DisplayName("realiza a busca de uma carta usando mock, com sucesso")
 	@Test
 	void deve_buscar_uma_carta_com_sucesso() {
+		when(mkSpringBuscaDeCartaRepository.getById(ID_CARTA)).thenReturn(cartaEntity);
+
 		CartaEntity repositoryResponse = repository.getById(ID_CARTA);
 
 		assertEquals(repositoryResponse, cartaEntity);
@@ -50,11 +52,25 @@ public class BuscaDeCartaRepositoryTest {
 	@DisplayName("realiza a busca da fila de uma carta usando mock, com sucesso")
 	@Test
 	void deve_buscar_a_fila_de_uma_carta_com_sucesso() {
+		when(mkSpringBuscaDeCartaRepository.getById(ID_CARTA)).thenReturn(cartaEntity);
+
 		Integer repositoryResponse = repository.findFila(ID_CARTA);
 
 		assertEquals(repositoryResponse, INFO_FILA);
 
 		verify(mkSpringBuscaDeCartaRepository).getById(ID_CARTA);
+	}
+
+	@DisplayName("realiza a contagem de cartas de um baralho usando mock, com sucesso")
+	@Test
+	void deve_contar_cartas_de_um_baralho_com_sucesso() {
+		when(mkSpringBuscaDeCartaRepository.countCartasBaralho(ID_BARALHO)).thenReturn(QUANTIDADE_CARTAS_DO_BARALHO);
+
+		Long repositoryResponse = repository.countCartasBaralho(ID_BARALHO);
+
+		assertEquals(repositoryResponse, QUANTIDADE_CARTAS_DO_BARALHO);
+
+		verify(mkSpringBuscaDeCartaRepository).countCartasBaralho(ID_BARALHO);
 	}
 
 }
