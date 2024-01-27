@@ -23,4 +23,9 @@ public class BuscaDeCartaRepository implements BuscaDeCartaRepositoryPorta {
 		return springBuscaDeCartaRepository.getById(id).getFila();
 	}
 
+	@Override
+	public Long countCartasBaralho(Long idBaralho) {
+		return springBuscaDeCartaRepository.countCartasBaralho(idBaralho);
+	}
+
 }
