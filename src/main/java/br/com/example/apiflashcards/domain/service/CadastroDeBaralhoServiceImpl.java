@@ -19,9 +19,8 @@ public class CadastroDeBaralhoServiceImpl implements CadastroDeBaralhoServicePor
 	@Override
 	public String cadastrarBaralhoComCartas(CadastroDeBaralhoComCartasRequestDTO cadastroDeBaralhoDTO) {
 		Baralho baralho = new Baralho(cadastroDeBaralhoDTO);
-		cadastroDeBaralhoRepositoryPorta.save(baralho);
-		return cadastroDeCartaServicePorta.cadastrarCartas(cadastroDeBaralhoDTO.getBaralho().getCartas(),
-				baralho.getId());
+		Long idBaralho = cadastroDeBaralhoRepositoryPorta.save(baralho).getId();
+		return cadastroDeCartaServicePorta.cadastrarCartas(cadastroDeBaralhoDTO.getBaralho().getCartas(), idBaralho);
 	}
 
 }
