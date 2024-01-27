@@ -20,6 +20,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 
+import br.com.example.apiflashcards.adapter.in.model.dto.InformacaoParaCadastroDeCartaRequestDTO;
 import br.com.example.apiflashcards.adapter.in.model.dto.TextoCartaRequestDTO;
 import br.com.example.apiflashcards.domain.model.Carta;
 import br.com.example.apiflashcards.domain.ports.out.CadastroDeCartaRepositoryPorta;
@@ -39,7 +40,7 @@ public class CadastroDeCartaServiceImplTest {
 	@Captor
 	private ArgumentCaptor<Carta> cartaCaptor;
 
-	@DisplayName("realiza o cadastro de duas cartas em um baralho usando mock, com sucesso")
+	@DisplayName("realiza o cadastro de uma lista de cartas em um baralho usando mock, com sucesso")
 	@Test
 	void deve_cadastrar_lista_de_cartas_em_um_baralho_com_sucesso() {
 		List<TextoCartaRequestDTO> listaCartas = criarListaDeCartas();
@@ -57,6 +58,29 @@ public class CadastroDeCartaServiceImplTest {
 		assertAll(() -> assertEquals(cartaCaptor.getAllValues().get(1).getFrente(), listaCartas.get(1).getFrente()),
 				() -> assertEquals(cartaCaptor.getAllValues().get(1).getTras(), listaCartas.get(1).getTras()),
 				() -> assertEquals(cartaCaptor.getAllValues().get(1).getFila(), CARTA_FILA_RESPOSTA));
+	}
+
+	@DisplayName("realiza o cadastro de uma carta em um baralho usando mock, com sucesso")
+	@Test
+	void deve_cadastrar_uma_carta_em_um_baralho_com_sucesso() {
+		InformacaoParaCadastroDeCartaRequestDTO informacaoParaCadastroDeCartaDTO = new InformacaoParaCadastroDeCartaRequestDTO();
+		TextoCartaRequestDTO carta = new TextoCartaRequestDTO();
+		carta.setFrente("info para frente 1");
+		carta.setTras("info para tras 1");
+		informacaoParaCadastroDeCartaDTO.setCarta(carta);
+
+		String serviceResponse = service.cadastrarCarta(informacaoParaCadastroDeCartaDTO, ID_BARALHO);
+
+		assertEquals(serviceResponse, HttpStatus.CREATED.getReasonPhrase());
+
+		verify(mkCadastroDeCartaRepositoryPorta).save(cartaCaptor.capture(), eq(ID_BARALHO));
+
+		assertAll(
+				() -> assertEquals(cartaCaptor.getValue().getFrente(),
+						informacaoParaCadastroDeCartaDTO.getCarta().getFrente()),
+				() -> assertEquals(cartaCaptor.getValue().getTras(),
+						informacaoParaCadastroDeCartaDTO.getCarta().getTras()),
+				() -> assertEquals(cartaCaptor.getValue().getFila(), CARTA_FILA_RESPOSTA));
 	}
 
 	private List<TextoCartaRequestDTO> criarListaDeCartas() {
