@@ -23,7 +23,7 @@ public class AtualizacaoDeCartaController {
 	public String atualizarFilaDaCarta(@PathVariable("id-carta") Long idCarta,
 			@RequestBody @Valid AtualizacaoDeCartaRequestDTO atualizacaoDeCartaRequestDTO) {
 		String atualizacaoDeCartaResponse = atualizacaoDeCartaServicePorta.atualizarFilaDeCarta(idCarta,
-				atualizacaoDeCartaRequestDTO.getCarta().getAvaliacao());
+				atualizacaoDeCartaRequestDTO.getInformacaoCartaDTO().getAvaliacao());
 		return atualizacaoDeCartaResponse;
 	}
 

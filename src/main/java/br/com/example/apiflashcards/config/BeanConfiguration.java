@@ -4,13 +4,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import br.com.example.apiflashcards.domain.ports.in.AtualizacaoDeCartaServicePorta;
+import br.com.example.apiflashcards.domain.ports.in.BuscaDeBaralhosServicePorta;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeBaralhoServicePorta;
 import br.com.example.apiflashcards.domain.ports.in.CadastroDeCartaServicePorta;
 import br.com.example.apiflashcards.domain.ports.out.AtualizacaoDeCartaRepositoryPorta;
+import br.com.example.apiflashcards.domain.ports.out.BuscaDeBaralhosRepositoryPorta;
 import br.com.example.apiflashcards.domain.ports.out.BuscaDeCartaRepositoryPorta;
 import br.com.example.apiflashcards.domain.ports.out.CadastroDeBaralhoRepositoryPorta;
 import br.com.example.apiflashcards.domain.ports.out.CadastroDeCartaRepositoryPorta;
 import br.com.example.apiflashcards.domain.service.AtualizacaoDeCartaServiceImpl;
+import br.com.example.apiflashcards.domain.service.BuscaDeBaralhosServiceImpl;
 import br.com.example.apiflashcards.domain.service.CadastroDeBaralhoServiceImpl;
 import br.com.example.apiflashcards.domain.service.CadastroDeCartaServiceImpl;
 
@@ -34,6 +37,11 @@ public class BeanConfiguration {
 			AtualizacaoDeCartaRepositoryPorta atualizacaoDeCartaRepositoryPorta,
 			BuscaDeCartaRepositoryPorta buscaDeCartaRepositoryPorta) {
 		return new AtualizacaoDeCartaServiceImpl(atualizacaoDeCartaRepositoryPorta, buscaDeCartaRepositoryPorta);
+	}
+
+	@Bean
+	BuscaDeBaralhosServicePorta buscaDeBaralhosService(BuscaDeBaralhosRepositoryPorta buscaDeBaralhosRepositoryPorta) {
+		return new BuscaDeBaralhosServiceImpl(buscaDeBaralhosRepositoryPorta);
 	}
 
 }
